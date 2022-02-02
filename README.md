@@ -63,3 +63,32 @@ If you don't have make (or a problem occured when using the MakeFile), use this 
 ```
 nvcc -rdc=true -o ./ising.out ./src/helpers.cu ./src/kernel.cu ./src/isingEvolution.cu ./src/main.cu
 ```
+
+# Expected Results
+When the code is executed, all versions (v0, v1, v2, v3) will be executed, one at a time.
+v0's result is saved and the result of all other versions will be compared to it. 
+A validation check will be run. The runtime of each version will also be printed
+
+Example expected result in command line:
+
+```
+Executing for n = 5000, k = 10
+
+
+v0 Implementation Runtime: 7509.000000ms
+
+v1 Implementation Runtime: 30.209057ms
+v1 Validation:
+Check success!
+
+
+v2 Implementation Runtime: 35.126846ms
+v2 Validation:
+Check success!
+
+
+v3 Implementation Runtime: 22.246336ms
+v3 Validation:
+Check success!
+```
+
