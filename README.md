@@ -67,7 +67,7 @@ nvcc -rdc=true -o ./ising.out ./src/helpers.cu ./src/kernel.cu ./src/isingEvolut
 # Expected Results
 When the code is executed, all versions (v0, v1, v2, v3) will be executed, one at a time.
 v0's result is saved and the result of all other versions will be compared to it. 
-A validation check will be run. The runtime of each version will also be printed
+A validation check will be run. The runtime of each version will also be printed.
 
 Example expected result in command line:
 
