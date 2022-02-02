@@ -1,0 +1,21 @@
+NVCC = nvcc
+FLAGS = -rdc=true -c
+HPATH = ./headers
+SRCPATH = ./src
+./ising: main.obj isingEvolution.obj kernel.obj helpers.obj
+	$(NVCC) main.obj isingEvolution.obj kernel.obj helpers.obj -o ising
+	
+./main.obj: $(SRCPATH)/main.cu $(HPATH)/isingEvolution.h $(HPATH)/helpers.h
+	$(NVCC) $(FLAGS) $(SRCPATH)/main.cu
+	
+./isingEvolution.obj: $(SRCPATH)/isingEvolution.cu $(HPATH)/helpers.h $(HPATH)/kernel.h
+	$(NVCC) $(FLAGS) $(SRCPATH)/isingEvolution.cu
+	
+./kernel.obj: $(SRCPATH)/kernel.cu $(HPATH)/helpers.h
+	$(NVCC) $(FLAGS) $(SRCPATH)/kernel.cu
+	
+./helpers.obj: $(SRCPATH)/helpers.cu
+	$(NVCC) $(FLAGS) $(SRCPATH)/helpers.cu
+	
+clean:
+	rm -f ./*.obj ./ising
